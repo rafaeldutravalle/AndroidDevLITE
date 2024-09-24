@@ -1,10 +1,18 @@
-buildscript {
-    ext {
-        compose_ui_version = '1.1.1'
-    }
-}// Top-level build file where you can add configuration options common to all sub-projects/modules.
-plugins {
-    id 'com.android.application' version '7.3.1' apply false
-    id 'com.android.library' version '7.3.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
+package com.example.matriculaalunonivel2.data
+
+enum class StatusAluno {
+APROVADO, REPROVADO
+}
+
+data class Aluno(
+val id: Int,
+var nome: String,
+var notas: MutableList<Float> = mutableListOf(),
+var turmaId: Int
+) {
+val media: Float
+get() = if (notas.isNotEmpty()) notas.sum() / notas.size else 0.0f
+
+val status: StatusAluno
+get() = if (media >= 7.0) StatusAluno.APROVADO else StatusAluno.REPROVADO
 }
