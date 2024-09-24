@@ -1,4 +1,6 @@
 package com.example.matriculaalunonivel2.data
+import com.example.matriculaalunonivel2.data.YourClassName;
+
 
 enum class StatusAluno {
 APROVADO, REPROVADO
