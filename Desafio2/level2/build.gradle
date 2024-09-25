@@ -1,24 +1,35 @@
-package com.example.matriculaalunonivel2.data
-import com.example.matriculaalunonivel2.data.YourClassName;
+apply plugin: 'com.android.application'
 
-
-enum class StatusAluno {
-APROVADO, REPROVADO
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.example.seuapp"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+    // outras configurações
 }
 
-data class Aluno(
-val id: Int,
-var nome: String,
-var notas: MutableList<Float> = mutableListOf(),
-var turmaId: Int
-) {
-val media: Float
-get() = if (notas.isNotEmpty()) notas.sum() / notas.size else 0.0f
-
-val status: StatusAluno
-get() = if (media >= 7.0) StatusAluno.APROVADO else StatusAluno.REPROVADO
+dependencies {
+    implementation 'com.android.support:appcompat-v7:30.0.0'
+    // outras dependências
 }
 
-ext {
-compose_ui_version = '1.1.1' // ou outra versão que você estiver usando
+buildscript {
+    repositories {
+        google() // Adicione isso
+        mavenCentral() // Adicione isso
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.0' // Verifique se está atualizado
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
